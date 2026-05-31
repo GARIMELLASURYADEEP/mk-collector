@@ -18,6 +18,11 @@ let koinsEditId = null;
 const elements = {
   pages: document.querySelectorAll('.page'),
   navButtons: document.querySelectorAll('.nav-link'),
+  mobileActions: document.querySelectorAll('.nav-action[data-menu]'),
+  mobileSheetOverlay: document.getElementById('mobileSheetOverlay'),
+  mobileSheetTitle: document.getElementById('mobileSheetTitle'),
+  mobileSheetBody: document.getElementById('mobileSheetBody'),
+  mobileSheetClose: document.getElementById('mobileSheetClose'),
   totalSouls: document.getElementById('totalSouls'),
   totalCrystals: document.getElementById('totalCrystals'),
   totalKoins: document.getElementById('totalKoins'),
@@ -82,6 +87,7 @@ initialize();
 
 function initialize() {
   attachNavigation();
+  attachMobileMenu();
   attachTrackerMenu();
   attachForms();
   attachSettings();
@@ -91,11 +97,78 @@ function initialize() {
 
 function attachNavigation() {
   elements.navButtons.forEach(button => {
-    // only bind default nav action to buttons that have a data-target
     if (button.dataset && button.dataset.target) {
-      button.addEventListener('click', () => setActivePage(button.dataset.target));
+      button.addEventListener('click', () => {
+        setActivePage(button.dataset.target);
+        closeMobileMenu();
+      });
     }
   });
+}
+
+function attachMobileMenu() {
+  elements.mobileActions.forEach(button => {
+    button.addEventListener('click', () => {
+      const menuType = button.dataset.menu;
+      if (!menuType) return;
+      openMobileMenu(menuType);
+    });
+  });
+
+  elements.mobileSheetClose.addEventListener('click', closeMobileMenu);
+
+  elements.mobileSheetOverlay.addEventListener('click', event => {
+    if (event.target === elements.mobileSheetOverlay) {
+      closeMobileMenu();
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeMobileMenu();
+    }
+  });
+}
+
+const mobileMenuConfig = {
+  track: [
+    { label: 'Souls', target: 'souls' },
+    { label: 'Dragon Crystal', target: 'crystals' },
+    { label: 'Koins', target: 'koins' }
+  ],
+  analytics: [
+    { label: 'Souls Analytics', target: 'souls-analytics' },
+    { label: 'Dragon Crystal Analytics', target: 'crystals-analytics' },
+    { label: 'Koins Analytics', target: 'koins-analytics' }
+  ],
+  predict: [
+    { label: 'Souls Prediction', target: 'souls-prediction' },
+    { label: 'Dragon Crystal Prediction', target: 'crystals-prediction' },
+    { label: 'Koins Prediction', target: 'koins-prediction' }
+  ]
+};
+
+function openMobileMenu(menuType) {
+  const items = mobileMenuConfig[menuType] || [];
+  elements.mobileSheetTitle.textContent = menuType === 'track' ? 'Track' : menuType === 'analytics' ? 'Analytics' : 'Predict';
+  elements.mobileSheetBody.innerHTML = items.map(item => `
+    <button class="sheet-item" type="button" data-target="${item.target}">${item.label}</button>
+  `).join('');
+
+  elements.mobileSheetBody.querySelectorAll('.sheet-item').forEach(item => {
+    item.addEventListener('click', () => {
+      setActivePage(item.dataset.target);
+      closeMobileMenu();
+    });
+  });
+
+  elements.mobileSheetOverlay.hidden = false;
+  elements.mobileSheetOverlay.classList.add('visible');
+}
+
+function closeMobileMenu() {
+  elements.mobileSheetOverlay.hidden = true;
+  elements.mobileSheetOverlay.classList.remove('visible');
 }
 
 function attachTrackerMenu() {
