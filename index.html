@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MK Mobile Tracker</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">MK</div>
+        <div>
+          <div class="brand-title">MK MOBILE TRACKER</div>
+          <div class="brand-subtitle">Progress, collection, and projection command center</div>
+        </div>
+      </div>
+      <nav class="top-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-target="dashboard">Dashboard</button>
+        <button class="nav-link" data-target="souls">Souls</button>
+        <button class="nav-link" data-target="crystals">Dragon Crystals</button>
+        <button class="nav-link" data-target="koins">Koins</button>
+        <button class="nav-link" data-target="analytics">Analytics</button>
+        <button class="nav-link" data-target="predictions">Predictions</button>
+        <button class="nav-link" data-target="settings">Settings</button>
+      </nav>
+    </header>
+
+    <main class="content">
+      <section class="page active" id="dashboard">
+        <div class="section-title">Dashboard</div>
+        <div class="grid cards-grid">
+          <article class="card card-strong card-souls">
+            <div class="card-label">Total Souls</div>
+            <div class="card-value" id="totalSouls">0</div>
+          </article>
+          <article class="card card-strong card-crystals">
+            <div class="card-label">Total Dragon Crystals</div>
+            <div class="card-value" id="totalCrystals">0</div>
+          </article>
+          <article class="card card-strong card-koins">
+            <div class="card-label">Total Koins</div>
+            <div class="card-value" id="totalKoins">0</div>
+          </article>
+          <article class="card">
+            <div class="card-label">Today’s Collection</div>
+            <div class="card-value" id="todaysCollection">0</div>
+          </article>
+          <article class="card">
+            <div class="card-label">Weekly Totals</div>
+            <div class="card-value" id="weeklyTotals">0</div>
+          </article>
+          <article class="card">
+            <div class="card-label">Monthly Totals</div>
+            <div class="card-value" id="monthlyTotals">0</div>
+          </article>
+        </div>
+
+        <div class="section-block">
+          <div class="section-subtitle">Recent Entries</div>
+          <div class="history-grid" id="dashboardRecent"></div>
+        </div>
+
+        <div class="section-block stats-block">
+          <div class="stats-card">
+            <div class="stats-label">Souls Daily Average</div>
+            <div class="stats-value" id="soulsDailyAvg">0</div>
+          </div>
+          <div class="stats-card">
+            <div class="stats-label">Souls Weekly Average</div>
+            <div class="stats-value" id="soulsWeeklyAvg">0</div>
+          </div>
+          <div class="stats-card">
+            <div class="stats-label">Souls Monthly Average</div>
+            <div class="stats-value" id="soulsMonthlyAvg">0</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="souls">
+        <div class="section-title">Souls Tracker</div>
+        <div class="tracker-grid">
+          <form class="tracker-form card" id="soulsForm">
+            <div class="form-group">
+              <label for="soulsAmount">Amount</label>
+              <input type="number" id="soulsAmount" min="1" step="1" required />
+            </div>
+            <div class="form-group">
+              <label for="soulsDate">Date</label>
+              <input type="date" id="soulsDate" required />
+            </div>
+            <div class="form-group">
+              <label for="soulsSource">Source</label>
+              <select id="soulsSource" required>
+                <option value="Challenge">Challenge</option>
+                <option value="Daily Quests">Daily Quests</option>
+                <option value="Realm Klash">Realm Klash</option>
+                <option value="Missions">Missions</option>
+                <option value="Towers">Towers</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
+            <div class="form-group" id="soulsCustomSourceGroup" hidden>
+              <label for="soulsCustomSource">Custom Source</label>
+              <input type="text" id="soulsCustomSource" placeholder="Enter source" />
+            </div>
+            <div class="form-group">
+              <label for="soulsNote">Note (optional)</label>
+              <input type="text" id="soulsNote" placeholder="Add a quick note" />
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="button button-primary" id="soulsSubmit">Add Souls</button>
+              <button type="button" class="button button-secondary" id="soulsCancelEdit" hidden>Cancel</button>
+            </div>
+          </form>
+
+          <div class="card history-card">
+            <div class="section-subtitle">Soul Entry History</div>
+            <div id="soulsHistory"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="crystals">
+        <div class="section-title">Dragon Crystal Tracker</div>
+        <div class="tracker-grid">
+          <form class="tracker-form card" id="crystalsForm">
+            <div class="form-group">
+              <label for="crystalsAmount">Amount</label>
+              <input type="number" id="crystalsAmount" min="1" step="1" required />
+            </div>
+            <div class="form-group">
+              <label for="crystalsDate">Date</label>
+              <input type="date" id="crystalsDate" required />
+            </div>
+            <div class="form-group">
+              <label for="crystalsReason">Reason / Source</label>
+              <input type="text" id="crystalsReason" placeholder="Daily reward, event, pack" required />
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="button button-primary" id="crystalsSubmit">Add Crystals</button>
+              <button type="button" class="button button-secondary" id="crystalsCancelEdit" hidden>Cancel</button>
+            </div>
+          </form>
+
+          <div class="card history-card">
+            <div class="section-subtitle">Crystal Entry History</div>
+            <div id="crystalsHistory"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="koins">
+        <div class="section-title">Koins Tracker</div>
+        <div class="tracker-grid">
+          <form class="tracker-form card" id="koinsForm">
+            <div class="form-group">
+              <label for="koinsAmount">Amount</label>
+              <input type="number" id="koinsAmount" min="1" step="1" required />
+            </div>
+            <div class="form-group">
+              <label for="koinsDate">Date</label>
+              <input type="date" id="koinsDate" required />
+            </div>
+            <div class="form-group">
+              <label for="koinsReason">Reason / Source</label>
+              <input type="text" id="koinsReason" placeholder="Daily reward, challenge, sale" required />
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="button button-primary" id="koinsSubmit">Add Koins</button>
+              <button type="button" class="button button-secondary" id="koinsCancelEdit" hidden>Cancel</button>
+            </div>
+          </form>
+
+          <div class="card history-card">
+            <div class="section-subtitle">Koin Entry History</div>
+            <div id="koinsHistory"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="analytics">
+        <div class="section-title">Analytics</div>
+        <div class="analytics-grid">
+          <div class="card chart-card">
+            <div class="chart-title">Soul Source Distribution</div>
+            <canvas id="sourceDistributionChart"></canvas>
+            <p class="chart-note" id="sourceDistributionText"></p>
+          </div>
+          <div class="card chart-card">
+            <div class="chart-title">Soul Growth Trend (30 days)</div>
+            <canvas id="growthTrendChart"></canvas>
+            <p class="chart-note" id="growthTrendText"></p>
+          </div>
+          <div class="card chart-card">
+            <div class="chart-title">Weekly Soul Totals</div>
+            <canvas id="weeklyTotalsChart"></canvas>
+            <p class="chart-note" id="weeklyTotalsText"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="predictions">
+        <div class="section-title">Predictions</div>
+        <div class="tracker-grid">
+          <form class="tracker-form card" id="predictionsForm">
+            <div class="form-group">
+              <label for="avgSoulsPerDay">Average Souls / Day</label>
+              <input type="number" id="avgSoulsPerDay" min="0" step="1" required />
+            </div>
+            <div class="form-group">
+              <label for="predictionNote">Goal or target</label>
+              <input type="text" id="predictionNote" placeholder="Long-term plan, e.g. damage pack" />
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="button button-primary">Update Prediction</button>
+            </div>
+          </form>
+          <div class="card prediction-card">
+            <div class="section-subtitle">Projection Summary</div>
+            <div class="prediction-list">
+              <div><span>1 Week</span><strong id="projWeek">0</strong></div>
+              <div><span>1 Month</span><strong id="projMonth">0</strong></div>
+              <div><span>3 Months</span><strong id="proj3Month">0</strong></div>
+              <div><span>6 Months</span><strong id="proj6Month">0</strong></div>
+              <div><span>1 Year</span><strong id="projYear">0</strong></div>
+            </div>
+            <div class="prediction-summary" id="predictionSummary"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="settings">
+        <div class="section-title">Settings</div>
+        <div class="settings-grid">
+          <div class="card settings-card">
+            <div class="settings-group">
+              <div class="settings-label">Persistent Save</div>
+              <p>All tracker data is saved automatically in your browser.</p>
+            </div>
+            <div class="settings-group">
+              <button class="button button-secondary" id="exportData">Export JSON Backup</button>
+              <button class="button button-secondary" id="importData">Import JSON Backup</button>
+              <input type="file" id="backupFile" accept="application/json" hidden />
+            </div>
+            <div class="settings-group">
+              <button class="button button-danger" id="clearData">Clear All Data</button>
+            </div>
+          </div>
+          <div class="card settings-card">
+            <div class="settings-label">Quick Notes</div>
+            <p>Use this section to back up or restore your collection history when switching devices.</p>
+            <p>Data is stored locally in the browser; clearing data will remove all progress.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+      <button class="nav-link active" data-target="dashboard">Dash</button>
+      <button class="nav-link" data-target="souls">Souls</button>
+      <button class="nav-link" data-target="analytics">Analytics</button>
+      <button class="nav-link" data-target="predictions">Predict</button>
+      <button class="nav-link" data-target="settings">Settings</button>
+    </nav>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
