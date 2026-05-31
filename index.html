@@ -19,30 +19,9 @@
       </div>
       <nav class="top-nav" aria-label="Main navigation">
         <button class="nav-link active" data-target="dashboard">Dashboard</button>
-        <div class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle" id="trackerMenuBtn" aria-haspopup="true" aria-expanded="false">Tracker Menu ▾</button>
-          <div class="dropdown-menu" id="trackerMenu" role="menu" aria-hidden="true">
-            <button class="dropdown-item" data-target="souls">Souls Tracker</button>
-            <button class="dropdown-item" data-target="crystals">Dragon Crystal Tracker</button>
-            <button class="dropdown-item" data-target="koins">Koins Tracker</button>
-          </div>
-        </div>
-        <div class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle" id="analyticsMenuBtn" aria-haspopup="true" aria-expanded="false">Analytics Menu ▾</button>
-          <div class="dropdown-menu" id="analyticsMenu" role="menu" aria-hidden="true">
-            <button class="dropdown-item" data-target="souls-analytics">Souls Analytics</button>
-            <button class="dropdown-item" data-target="crystals-analytics">Dragon Crystal Analytics</button>
-            <button class="dropdown-item" data-target="koins-analytics">Koins Analytics</button>
-          </div>
-        </div>
-        <div class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle" id="predictionMenuBtn" aria-haspopup="true" aria-expanded="false">Prediction Menu ▾</button>
-          <div class="dropdown-menu" id="predictionMenu" role="menu" aria-hidden="true">
-            <button class="dropdown-item" data-target="souls-prediction">Souls Prediction</button>
-            <button class="dropdown-item" data-target="crystals-prediction">Dragon Crystal Prediction</button>
-            <button class="dropdown-item" data-target="koins-prediction">Koins Prediction</button>
-          </div>
-        </div>
+        <button class="nav-link nav-action" data-menu="track">Track</button>
+        <button class="nav-link nav-action" data-menu="analytics">Analytics</button>
+        <button class="nav-link nav-action" data-menu="predict">Predict</button>
         <button class="nav-link" data-target="settings">Settings</button>
       </nav>
     </header>
@@ -433,32 +412,21 @@
       </section>
     </main>
 
+    <div class="mobile-sheet-overlay" id="mobileSheetOverlay" hidden>
+      <div class="mobile-sheet" role="dialog" aria-modal="true" aria-labelledby="mobileSheetTitle">
+        <div class="sheet-header">
+          <div class="sheet-title" id="mobileSheetTitle">Menu</div>
+          <button type="button" class="sheet-close" id="mobileSheetClose" aria-label="Close menu">×</button>
+        </div>
+        <div class="sheet-body" id="mobileSheetBody"></div>
+      </div>
+    </div>
+
     <nav class="bottom-nav" aria-label="Mobile navigation">
       <button class="nav-link active" data-target="dashboard">Dash</button>
-      <div class="nav-item dropdown bottom">
-        <button class="nav-link dropdown-toggle" id="trackerMenuBtnBottom" aria-haspopup="true" aria-expanded="false">Track ▾</button>
-        <div class="dropdown-menu" id="trackerMenuBottom" role="menu" aria-hidden="true">
-          <button class="dropdown-item" data-target="souls">Souls</button>
-          <button class="dropdown-item" data-target="crystals">Dragon Crystals</button>
-          <button class="dropdown-item" data-target="koins">Koins</button>
-        </div>
-      </div>
-      <div class="nav-item dropdown bottom">
-        <button class="nav-link dropdown-toggle" id="analyticsMenuBtnBottom" aria-haspopup="true" aria-expanded="false">Analytics ▾</button>
-        <div class="dropdown-menu" id="analyticsMenuBottom" role="menu" aria-hidden="true">
-          <button class="dropdown-item" data-target="souls-analytics">Souls Analytics</button>
-          <button class="dropdown-item" data-target="crystals-analytics">Dragon Crystal Analytics</button>
-          <button class="dropdown-item" data-target="koins-analytics">Koins Analytics</button>
-        </div>
-      </div>
-      <div class="nav-item dropdown bottom">
-        <button class="nav-link dropdown-toggle" id="predictionMenuBtnBottom" aria-haspopup="true" aria-expanded="false">Predict ▾</button>
-        <div class="dropdown-menu" id="predictionMenuBottom" role="menu" aria-hidden="true">
-          <button class="dropdown-item" data-target="souls-prediction">Souls Prediction</button>
-          <button class="dropdown-item" data-target="crystals-prediction">Dragon Crystal Prediction</button>
-          <button class="dropdown-item" data-target="koins-prediction">Koins Prediction</button>
-        </div>
-      </div>
+      <button class="nav-link nav-action" data-menu="track">Track</button>
+      <button class="nav-link nav-action" data-menu="analytics">Analytics</button>
+      <button class="nav-link nav-action" data-menu="predict">Predict</button>
       <button class="nav-link" data-target="settings">Settings</button>
     </nav>
   </div>
