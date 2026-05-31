@@ -18,11 +18,18 @@
         </div>
       </div>
       <nav class="top-nav" aria-label="Main navigation">
-        <button class="nav-link active" data-target="dashboard">Dashboard</button>
-        <button class="nav-link nav-action" data-menu="track">Track</button>
-        <button class="nav-link nav-action" data-menu="analytics">Analytics</button>
-        <button class="nav-link nav-action" data-menu="predict">Predict</button>
-        <button class="nav-link" data-target="settings">Settings</button>
+        <button class="nav-link active" data-target="dashboard" type="button">Dashboard</button>
+        <div class="nav-item tracker-dropdown">
+          <button class="nav-link tracker-toggle" type="button" id="trackerMenuBtn" aria-expanded="false">Tracker Menu ▼</button>
+          <div class="tracker-menu" id="trackerMenu" aria-hidden="true">
+            <button class="dropdown-item tracker-item" type="button" data-target="souls">Souls Tracker</button>
+            <button class="dropdown-item tracker-item" type="button" data-target="crystals">Dragon Crystal Tracker</button>
+            <button class="dropdown-item tracker-item" type="button" data-target="koins">Koins Tracker</button>
+          </div>
+        </div>
+        <button class="nav-link" data-target="analytics" type="button">Analytics</button>
+        <button class="nav-link" data-target="predict" type="button">Predict</button>
+        <button class="nav-link" data-target="settings" type="button">Settings</button>
       </nav>
     </header>
 
@@ -412,22 +419,19 @@
       </section>
     </main>
 
-    <div class="mobile-sheet-overlay" id="mobileSheetOverlay" hidden>
-      <div class="mobile-sheet" role="dialog" aria-modal="true" aria-labelledby="mobileSheetTitle">
-        <div class="sheet-header">
-          <div class="sheet-title" id="mobileSheetTitle">Menu</div>
-          <button type="button" class="sheet-close" id="mobileSheetClose" aria-label="Close menu">×</button>
-        </div>
-        <div class="sheet-body" id="mobileSheetBody"></div>
-      </div>
-    </div>
-
     <nav class="bottom-nav" aria-label="Mobile navigation">
-      <button class="nav-link active" data-target="dashboard">Dash</button>
-      <button class="nav-link nav-action" data-menu="track">Track</button>
-      <button class="nav-link nav-action" data-menu="analytics">Analytics</button>
-      <button class="nav-link nav-action" data-menu="predict">Predict</button>
-      <button class="nav-link" data-target="settings">Settings</button>
+      <button class="nav-link active" data-target="dashboard" type="button">Dash</button>
+      <div class="nav-item tracker-dropdown">
+        <button class="nav-link tracker-toggle" type="button" id="trackerMenuBtnBottom" aria-expanded="false">Tracker Menu ▼</button>
+        <div class="tracker-menu" id="trackerMenuBottom" aria-hidden="true">
+          <button class="dropdown-item tracker-item" type="button" data-target="souls">Souls Tracker</button>
+          <button class="dropdown-item tracker-item" type="button" data-target="crystals">Dragon Crystal Tracker</button>
+          <button class="dropdown-item tracker-item" type="button" data-target="koins">Koins Tracker</button>
+        </div>
+      </div>
+      <button class="nav-link" data-target="analytics" type="button">Analytics</button>
+      <button class="nav-link" data-target="predict" type="button">Predict</button>
+      <button class="nav-link" data-target="settings" type="button">Settings</button>
     </nav>
   </div>
 

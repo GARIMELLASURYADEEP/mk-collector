@@ -137,100 +137,62 @@ button {
   position: relative;
 }
 
-.mobile-sheet-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(5, 8, 12, 0.88);
+.tracker-dropdown {
+  position: relative;
+}
+
+.tracker-menu {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 50%;
+  transform: translateX(-50%);
   display: none;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 1rem;
-  z-index: 60;
-  overflow: auto;
-}
-
-.mobile-sheet-overlay.visible {
-  display: flex;
-}
-
-.mobile-sheet {
-  width: min(100%, 560px);
-  max-height: 88vh;
+  grid-template-columns: 1fr;
+  gap: 0.45rem;
+  min-width: 180px;
+  width: min(240px, calc(100vw - 2rem));
   background: rgba(12, 16, 22, 0.98);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 24px 24px 0 0;
-  padding: 1rem 1rem 0.85rem;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-  display: grid;
-  gap: 1rem;
-  overflow: hidden;
-}
-
-.sheet-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.sheet-title {
-  font-size: 0.95rem;
-  letter-spacing: 0.14em;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--text);
-}
-
-.sheet-close {
-  width: 44px;
-  height: 44px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.08);
-  color: var(--text);
-  font-size: 1.5rem;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.sheet-body {
-  display: grid;
-  gap: 0.85rem;
-  max-height: calc(88vh - 120px);
-  overflow: auto;
-  padding-right: 0.2rem;
-}
-
-.sheet-item {
-  width: 100%;
-  text-align: center;
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 18px;
-  padding: 1rem 1.1rem;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.06);
-  color: var(--text);
-  font-weight: 700;
-  font-size: 1rem;
+  padding: 0.5rem;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+  z-index: 30;
 }
 
-.sheet-item:hover,
-.sheet-item:focus {
+.bottom-nav .tracker-menu {
+  top: auto;
+  bottom: calc(100% + 0.4rem);
+}
+
+.tracker-dropdown.open .tracker-menu {
+  display: grid;
+}
+
+.tracker-toggle {
+  width: 100%;
+}
+
+.dropdown-item {
+  width: 100%;
+  text-align: left;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text);
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  font-weight: 700;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
   background: rgba(255,255,255,0.12);
   outline: none;
-}
-
-.dropdown-menu,
-.dropdown .dropdown-toggle,
-.dropdown-toggle {
-  display: none !important;
 }
 
 .content {
   flex: 1;
   width: min(1320px, 100%);
-  margin: 1rem auto 5rem;
+  margin: 1rem auto 6rem;
   padding: 0 1.5rem;
   position: relative;
   z-index: 10;
