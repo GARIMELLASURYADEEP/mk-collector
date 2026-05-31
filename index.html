@@ -19,16 +19,30 @@
       </div>
       <nav class="top-nav" aria-label="Main navigation">
         <button class="nav-link active" data-target="dashboard">Dashboard</button>
-        <div class="nav-item tracker-dropdown">
-          <button class="nav-link tracker-toggle" id="trackerMenuBtn" aria-haspopup="true" aria-expanded="false">Tracker Menu ▾</button>
-          <div class="tracker-menu" id="trackerMenu" role="menu" aria-hidden="true">
-            <button class="tracker-item" data-target="souls">Souls Tracker</button>
-            <button class="tracker-item" data-target="crystals">Dragon Crystal Tracker</button>
-            <button class="tracker-item" data-target="koins">Koins Tracker</button>
+        <div class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle" id="trackerMenuBtn" aria-haspopup="true" aria-expanded="false">Tracker Menu ▾</button>
+          <div class="dropdown-menu" id="trackerMenu" role="menu" aria-hidden="true">
+            <button class="dropdown-item" data-target="souls">Souls Tracker</button>
+            <button class="dropdown-item" data-target="crystals">Dragon Crystal Tracker</button>
+            <button class="dropdown-item" data-target="koins">Koins Tracker</button>
           </div>
         </div>
-        <button class="nav-link" data-target="analytics">Analytics</button>
-        <button class="nav-link" data-target="predictions">Predictions</button>
+        <div class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle" id="analyticsMenuBtn" aria-haspopup="true" aria-expanded="false">Analytics Menu ▾</button>
+          <div class="dropdown-menu" id="analyticsMenu" role="menu" aria-hidden="true">
+            <button class="dropdown-item" data-target="souls-analytics">Souls Analytics</button>
+            <button class="dropdown-item" data-target="crystals-analytics">Dragon Crystal Analytics</button>
+            <button class="dropdown-item" data-target="koins-analytics">Koins Analytics</button>
+          </div>
+        </div>
+        <div class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle" id="predictionMenuBtn" aria-haspopup="true" aria-expanded="false">Prediction Menu ▾</button>
+          <div class="dropdown-menu" id="predictionMenu" role="menu" aria-hidden="true">
+            <button class="dropdown-item" data-target="souls-prediction">Souls Prediction</button>
+            <button class="dropdown-item" data-target="crystals-prediction">Dragon Crystal Prediction</button>
+            <button class="dropdown-item" data-target="koins-prediction">Koins Prediction</button>
+          </div>
+        </div>
         <button class="nav-link" data-target="settings">Settings</button>
       </nav>
     </header>
@@ -36,51 +50,75 @@
     <main class="content">
       <section class="page active" id="dashboard">
         <div class="section-title">Dashboard</div>
-        <div class="grid cards-grid">
-          <article class="card card-strong card-souls">
+        <div class="dashboard-grid">
+          <article class="card tile tile-souls">
             <div class="card-label">Total Souls</div>
             <div class="card-value" id="totalSouls">0</div>
           </article>
-          <article class="card card-strong card-crystals">
+          <article class="card tile tile-crystals">
             <div class="card-label">Total Dragon Crystals</div>
             <div class="card-value" id="totalCrystals">0</div>
           </article>
-          <article class="card card-strong card-koins">
+          <article class="card tile tile-koins">
             <div class="card-label">Total Koins</div>
             <div class="card-value" id="totalKoins">0</div>
           </article>
-          <article class="card">
+          <article class="card tile tile-collection">
             <div class="card-label">Today’s Collection</div>
             <div class="card-value" id="todaysCollection">0</div>
           </article>
-          <article class="card">
-            <div class="card-label">Weekly Totals</div>
+          <article class="card tile tile-weekly">
+            <div class="card-label">Weekly Total</div>
             <div class="card-value" id="weeklyTotals">0</div>
           </article>
-          <article class="card">
-            <div class="card-label">Monthly Totals</div>
+          <article class="card tile tile-monthly">
+            <div class="card-label">Monthly Total</div>
             <div class="card-value" id="monthlyTotals">0</div>
           </article>
         </div>
 
-        <div class="section-block">
-          <div class="section-subtitle">Recent Entries</div>
-          <div class="history-grid" id="dashboardRecent"></div>
+        <div class="dashboard-grid detail-grid">
+          <article class="card detail-card card-souls">
+            <div class="card-label">Souls Daily Average</div>
+            <div class="card-value" id="soulsDailyAvg">0</div>
+          </article>
+          <article class="card detail-card card-souls">
+            <div class="card-label">Souls Weekly Average</div>
+            <div class="card-value" id="soulsWeeklyAvg">0</div>
+          </article>
+          <article class="card detail-card card-souls">
+            <div class="card-label">Souls Monthly Average</div>
+            <div class="card-value" id="soulsMonthlyAvg">0</div>
+          </article>
+          <article class="card detail-card card-crystals">
+            <div class="card-label">Crystals Daily Average</div>
+            <div class="card-value" id="crystalsDailyAvg">0</div>
+          </article>
+          <article class="card detail-card card-crystals">
+            <div class="card-label">Crystals Weekly Average</div>
+            <div class="card-value" id="crystalsWeeklyAvg">0</div>
+          </article>
+          <article class="card detail-card card-crystals">
+            <div class="card-label">Crystals Monthly Average</div>
+            <div class="card-value" id="crystalsMonthlyAvg">0</div>
+          </article>
+          <article class="card detail-card card-koins">
+            <div class="card-label">Koins Daily Average</div>
+            <div class="card-value" id="koinsDailyAvg">0</div>
+          </article>
+          <article class="card detail-card card-koins">
+            <div class="card-label">Koins Weekly Average</div>
+            <div class="card-value" id="koinsWeeklyAvg">0</div>
+          </article>
+          <article class="card detail-card card-koins">
+            <div class="card-label">Koins Monthly Average</div>
+            <div class="card-value" id="koinsMonthlyAvg">0</div>
+          </article>
         </div>
 
-        <div class="section-block stats-block">
-          <div class="stats-card">
-            <div class="stats-label">Souls Daily Average</div>
-            <div class="stats-value" id="soulsDailyAvg">0</div>
-          </div>
-          <div class="stats-card">
-            <div class="stats-label">Souls Weekly Average</div>
-            <div class="stats-value" id="soulsWeeklyAvg">0</div>
-          </div>
-          <div class="stats-card">
-            <div class="stats-label">Souls Monthly Average</div>
-            <div class="stats-value" id="soulsMonthlyAvg">0</div>
-          </div>
+        <div class="section-block">
+          <div class="section-subtitle">Recent Activity</div>
+          <div class="history-grid" id="dashboardRecent"></div>
         </div>
       </section>
 
@@ -186,53 +224,185 @@
         </div>
       </section>
 
-      <section class="page" id="analytics">
-        <div class="section-title">Analytics</div>
+      <section class="page" id="souls-analytics">
+        <div class="page-header page-brand-analytics">
+          <div>
+            <div class="section-title">Souls Analytics</div>
+            <p class="section-note">Visualize soul sources, growth, and weekly performance with clean insights.</p>
+          </div>
+        </div>
         <div class="analytics-grid">
           <div class="card chart-card">
-            <div class="chart-title">Soul Source Distribution</div>
-            <canvas id="sourceDistributionChart"></canvas>
-            <p class="chart-note" id="sourceDistributionText"></p>
+            <div class="chart-title">Source Distribution</div>
+            <canvas id="soulsSourceChart"></canvas>
+            <p class="chart-note" id="soulsSourceText"></p>
           </div>
           <div class="card chart-card">
-            <div class="chart-title">Soul Growth Trend (30 days)</div>
-            <canvas id="growthTrendChart"></canvas>
-            <p class="chart-note" id="growthTrendText"></p>
+            <div class="chart-title">Growth Trend (30 days)</div>
+            <canvas id="soulsTrendChart"></canvas>
+            <p class="chart-note" id="soulsTrendText"></p>
           </div>
           <div class="card chart-card">
             <div class="chart-title">Weekly Soul Totals</div>
-            <canvas id="weeklyTotalsChart"></canvas>
-            <p class="chart-note" id="weeklyTotalsText"></p>
+            <canvas id="soulsWeeklyChart"></canvas>
+            <p class="chart-note" id="soulsWeeklyText"></p>
           </div>
         </div>
       </section>
 
-      <section class="page" id="predictions">
-        <div class="section-title">Predictions</div>
-        <div class="tracker-grid">
-          <form class="tracker-form card" id="predictionsForm">
+      <section class="page" id="crystals-analytics">
+        <div class="page-header page-brand-analytics">
+          <div>
+            <div class="section-title">Dragon Crystal Analytics</div>
+            <p class="section-note">Track crystal pace, event impact, and weekly collection momentum.</p>
+          </div>
+        </div>
+        <div class="analytics-grid">
+          <div class="card chart-card">
+            <div class="chart-title">Crystal Source Breakdown</div>
+            <canvas id="crystalsSourceChart"></canvas>
+            <p class="chart-note" id="crystalsSourceText"></p>
+          </div>
+          <div class="card chart-card">
+            <div class="chart-title">Growth Trend (30 days)</div>
+            <canvas id="crystalsTrendChart"></canvas>
+            <p class="chart-note" id="crystalsTrendText"></p>
+          </div>
+          <div class="card chart-card">
+            <div class="chart-title">Weekly Crystal Totals</div>
+            <canvas id="crystalsWeeklyChart"></canvas>
+            <p class="chart-note" id="crystalsWeeklyText"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="koins-analytics">
+        <div class="page-header page-brand-analytics">
+          <div>
+            <div class="section-title">Koins Analytics</div>
+            <p class="section-note">Monitor koin trends, source mix, and monthly reserves clearly.</p>
+          </div>
+        </div>
+        <div class="analytics-grid">
+          <div class="card chart-card">
+            <div class="chart-title">Koin Source Breakdown</div>
+            <canvas id="koinsSourceChart"></canvas>
+            <p class="chart-note" id="koinsSourceText"></p>
+          </div>
+          <div class="card chart-card">
+            <div class="chart-title">Growth Trend (30 days)</div>
+            <canvas id="koinsTrendChart"></canvas>
+            <p class="chart-note" id="koinsTrendText"></p>
+          </div>
+          <div class="card chart-card">
+            <div class="chart-title">Weekly Koin Totals</div>
+            <canvas id="koinsWeeklyChart"></canvas>
+            <p class="chart-note" id="koinsWeeklyText"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="souls-prediction">
+        <div class="page-header page-brand-predictions">
+          <div>
+            <div class="section-title">Souls Prediction</div>
+            <p class="section-note">Estimate future gains and plan progression with premium projections.</p>
+          </div>
+        </div>
+        <div class="prediction-grid">
+          <form class="tracker-form card" id="soulsPredictionForm" data-category="souls">
             <div class="form-group">
-              <label for="avgSoulsPerDay">Average Souls / Day</label>
-              <input type="number" id="avgSoulsPerDay" min="0" step="1" required />
+              <label for="soulsAvgPerDay">Average Souls / Day</label>
+              <input type="number" id="soulsAvgPerDay" min="0" step="1" required />
             </div>
             <div class="form-group">
-              <label for="predictionNote">Goal or target</label>
-              <input type="text" id="predictionNote" placeholder="Long-term plan, e.g. damage pack" />
+              <label for="soulsPredictionNote">Goal or target</label>
+              <input type="text" id="soulsPredictionNote" placeholder="Estimate gear, packs, or damage" />
             </div>
             <div class="form-actions">
-              <button type="submit" class="button button-primary">Update Prediction</button>
+              <button type="submit" class="button button-primary">Save Prediction</button>
             </div>
           </form>
           <div class="card prediction-card">
-            <div class="section-subtitle">Projection Summary</div>
+            <div class="section-subtitle">Projected Gains</div>
             <div class="prediction-list">
-              <div><span>1 Week</span><strong id="projWeek">0</strong></div>
-              <div><span>1 Month</span><strong id="projMonth">0</strong></div>
-              <div><span>3 Months</span><strong id="proj3Month">0</strong></div>
-              <div><span>6 Months</span><strong id="proj6Month">0</strong></div>
-              <div><span>1 Year</span><strong id="projYear">0</strong></div>
+              <div><span>1 Week</span><strong id="soulsProjWeek">0</strong></div>
+              <div><span>1 Month</span><strong id="soulsProjMonth">0</strong></div>
+              <div><span>3 Months</span><strong id="soulsProj3Month">0</strong></div>
+              <div><span>6 Months</span><strong id="soulsProj6Month">0</strong></div>
+              <div><span>1 Year</span><strong id="soulsProjYear">0</strong></div>
             </div>
-            <div class="prediction-summary" id="predictionSummary"></div>
+            <div class="prediction-summary" id="soulsPredictionSummary"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="crystals-prediction">
+        <div class="page-header page-brand-predictions">
+          <div>
+            <div class="section-title">Dragon Crystal Prediction</div>
+            <p class="section-note">Forecast crystal flow and event readiness clearly.</p>
+          </div>
+        </div>
+        <div class="prediction-grid">
+          <form class="tracker-form card" id="crystalsPredictionForm" data-category="crystals">
+            <div class="form-group">
+              <label for="crystalsAvgPerDay">Average Crystals / Day</label>
+              <input type="number" id="crystalsAvgPerDay" min="0" step="1" required />
+            </div>
+            <div class="form-group">
+              <label for="crystalsPredictionNote">Goal or target</label>
+              <input type="text" id="crystalsPredictionNote" placeholder="Estimate pulls, events, or milestones" />
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="button button-primary">Save Prediction</button>
+            </div>
+          </form>
+          <div class="card prediction-card">
+            <div class="section-subtitle">Projected Gains</div>
+            <div class="prediction-list">
+              <div><span>1 Week</span><strong id="crystalsProjWeek">0</strong></div>
+              <div><span>1 Month</span><strong id="crystalsProjMonth">0</strong></div>
+              <div><span>3 Months</span><strong id="crystalsProj3Month">0</strong></div>
+              <div><span>6 Months</span><strong id="crystalsProj6Month">0</strong></div>
+              <div><span>1 Year</span><strong id="crystalsProjYear">0</strong></div>
+            </div>
+            <div class="prediction-summary" id="crystalsPredictionSummary"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="koins-prediction">
+        <div class="page-header page-brand-predictions">
+          <div>
+            <div class="section-title">Koins Prediction</div>
+            <p class="section-note">Plan koin gains and vault progress with accurate projections.</p>
+          </div>
+        </div>
+        <div class="prediction-grid">
+          <form class="tracker-form card" id="koinsPredictionForm" data-category="koins">
+            <div class="form-group">
+              <label for="koinsAvgPerDay">Average Koins / Day</label>
+              <input type="number" id="koinsAvgPerDay" min="0" step="1" required />
+            </div>
+            <div class="form-group">
+              <label for="koinsPredictionNote">Goal or target</label>
+              <input type="text" id="koinsPredictionNote" placeholder="Estimate vault, purchases, or upgrades" />
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="button button-primary">Save Prediction</button>
+            </div>
+          </form>
+          <div class="card prediction-card">
+            <div class="section-subtitle">Projected Gains</div>
+            <div class="prediction-list">
+              <div><span>1 Week</span><strong id="koinsProjWeek">0</strong></div>
+              <div><span>1 Month</span><strong id="koinsProjMonth">0</strong></div>
+              <div><span>3 Months</span><strong id="koinsProj3Month">0</strong></div>
+              <div><span>6 Months</span><strong id="koinsProj6Month">0</strong></div>
+              <div><span>1 Year</span><strong id="koinsProjYear">0</strong></div>
+            </div>
+            <div class="prediction-summary" id="koinsPredictionSummary"></div>
           </div>
         </div>
       </section>
@@ -265,16 +435,30 @@
 
     <nav class="bottom-nav" aria-label="Mobile navigation">
       <button class="nav-link active" data-target="dashboard">Dash</button>
-      <div class="nav-item tracker-dropdown bottom">
-        <button class="nav-link tracker-toggle" id="trackerMenuBtnBottom" aria-haspopup="true" aria-expanded="false">Tracker ▾</button>
-        <div class="tracker-menu" id="trackerMenuBottom" role="menu" aria-hidden="true">
-          <button class="tracker-item" data-target="souls">Souls</button>
-          <button class="tracker-item" data-target="crystals">Dragon Crystals</button>
-          <button class="tracker-item" data-target="koins">Koins</button>
+      <div class="nav-item dropdown bottom">
+        <button class="nav-link dropdown-toggle" id="trackerMenuBtnBottom" aria-haspopup="true" aria-expanded="false">Track ▾</button>
+        <div class="dropdown-menu" id="trackerMenuBottom" role="menu" aria-hidden="true">
+          <button class="dropdown-item" data-target="souls">Souls</button>
+          <button class="dropdown-item" data-target="crystals">Dragon Crystals</button>
+          <button class="dropdown-item" data-target="koins">Koins</button>
         </div>
       </div>
-      <button class="nav-link" data-target="analytics">Analytics</button>
-      <button class="nav-link" data-target="predictions">Predict</button>
+      <div class="nav-item dropdown bottom">
+        <button class="nav-link dropdown-toggle" id="analyticsMenuBtnBottom" aria-haspopup="true" aria-expanded="false">Analytics ▾</button>
+        <div class="dropdown-menu" id="analyticsMenuBottom" role="menu" aria-hidden="true">
+          <button class="dropdown-item" data-target="souls-analytics">Souls Analytics</button>
+          <button class="dropdown-item" data-target="crystals-analytics">Dragon Crystal Analytics</button>
+          <button class="dropdown-item" data-target="koins-analytics">Koins Analytics</button>
+        </div>
+      </div>
+      <div class="nav-item dropdown bottom">
+        <button class="nav-link dropdown-toggle" id="predictionMenuBtnBottom" aria-haspopup="true" aria-expanded="false">Predict ▾</button>
+        <div class="dropdown-menu" id="predictionMenuBottom" role="menu" aria-hidden="true">
+          <button class="dropdown-item" data-target="souls-prediction">Souls Prediction</button>
+          <button class="dropdown-item" data-target="crystals-prediction">Dragon Crystal Prediction</button>
+          <button class="dropdown-item" data-target="koins-prediction">Koins Prediction</button>
+        </div>
+      </div>
       <button class="nav-link" data-target="settings">Settings</button>
     </nav>
   </div>
