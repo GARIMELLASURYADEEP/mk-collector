@@ -19,9 +19,14 @@
       </div>
       <nav class="top-nav" aria-label="Main navigation">
         <button class="nav-link active" data-target="dashboard">Dashboard</button>
-        <button class="nav-link" data-target="souls">Souls</button>
-        <button class="nav-link" data-target="crystals">Dragon Crystals</button>
-        <button class="nav-link" data-target="koins">Koins</button>
+        <div class="nav-item tracker-dropdown">
+          <button class="nav-link tracker-toggle" id="trackerMenuBtn" aria-haspopup="true" aria-expanded="false">Tracker Menu ▾</button>
+          <div class="tracker-menu" id="trackerMenu" role="menu" aria-hidden="true">
+            <button class="tracker-item" data-target="souls">Souls Tracker</button>
+            <button class="tracker-item" data-target="crystals">Dragon Crystal Tracker</button>
+            <button class="tracker-item" data-target="koins">Koins Tracker</button>
+          </div>
+        </div>
         <button class="nav-link" data-target="analytics">Analytics</button>
         <button class="nav-link" data-target="predictions">Predictions</button>
         <button class="nav-link" data-target="settings">Settings</button>
@@ -260,7 +265,14 @@
 
     <nav class="bottom-nav" aria-label="Mobile navigation">
       <button class="nav-link active" data-target="dashboard">Dash</button>
-      <button class="nav-link" data-target="souls">Souls</button>
+      <div class="nav-item tracker-dropdown bottom">
+        <button class="nav-link tracker-toggle" id="trackerMenuBtnBottom" aria-haspopup="true" aria-expanded="false">Tracker ▾</button>
+        <div class="tracker-menu" id="trackerMenuBottom" role="menu" aria-hidden="true">
+          <button class="tracker-item" data-target="souls">Souls</button>
+          <button class="tracker-item" data-target="crystals">Dragon Crystals</button>
+          <button class="tracker-item" data-target="koins">Koins</button>
+        </div>
+      </div>
       <button class="nav-link" data-target="analytics">Analytics</button>
       <button class="nav-link" data-target="predictions">Predict</button>
       <button class="nav-link" data-target="settings">Settings</button>

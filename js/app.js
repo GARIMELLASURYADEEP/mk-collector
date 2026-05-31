@@ -68,6 +68,10 @@ const elements = {
   importData: document.getElementById('importData'),
   backupFile: document.getElementById('backupFile'),
   clearData: document.getElementById('clearData')
+  ,trackerMenuBtn: document.getElementById('trackerMenuBtn')
+  ,trackerMenu: document.getElementById('trackerMenu')
+  ,trackerMenuBtnBottom: document.getElementById('trackerMenuBtnBottom')
+  ,trackerMenuBottom: document.getElementById('trackerMenuBottom')
 };
 
 let sourceDistributionChart;
@@ -78,6 +82,7 @@ initialize();
 
 function initialize() {
   attachNavigation();
+  attachTrackerMenu();
   attachForms();
   attachSettings();
   populateDefaultDates();
@@ -86,8 +91,51 @@ function initialize() {
 
 function attachNavigation() {
   elements.navButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      setActivePage(button.dataset.target);
+    // only bind default nav action to buttons that have a data-target
+    if (button.dataset && button.dataset.target) {
+      button.addEventListener('click', () => setActivePage(button.dataset.target));
+    }
+  });
+}
+
+function attachTrackerMenu() {
+  const toggles = [elements.trackerMenuBtn, elements.trackerMenuBtnBottom].filter(Boolean);
+  toggles.forEach(toggle => {
+    const wrapper = toggle.closest('.tracker-dropdown');
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = wrapper.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      const menu = wrapper.querySelector('.tracker-menu');
+      if (menu) menu.setAttribute('aria-hidden', String(!isOpen));
+    });
+  });
+
+  // close when clicking outside
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.tracker-dropdown.open').forEach(w => {
+      w.classList.remove('open');
+      const t = w.querySelector('.tracker-toggle');
+      if (t) t.setAttribute('aria-expanded', 'false');
+      const m = w.querySelector('.tracker-menu');
+      if (m) m.setAttribute('aria-hidden', 'true');
+    });
+  });
+
+  // menu item selection
+  document.querySelectorAll('.tracker-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const target = item.dataset.target;
+      if (target) setActivePage(target);
+      // close all menus
+      document.querySelectorAll('.tracker-dropdown.open').forEach(w => {
+        w.classList.remove('open');
+        const t = w.querySelector('.tracker-toggle');
+        if (t) t.setAttribute('aria-expanded', 'false');
+        const m = w.querySelector('.tracker-menu');
+        if (m) m.setAttribute('aria-hidden', 'true');
+      });
     });
   });
 }

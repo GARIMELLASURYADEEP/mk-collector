@@ -104,6 +104,59 @@ button {
   border-color: rgba(255,255,255,0.1);
 }
 
+/* Tracker Menu dropdown styles */
+.nav-item.tracker-dropdown {
+  position: relative;
+}
+
+.tracker-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tracker-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.4rem;
+  min-width: 180px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  z-index: 40;
+  display: none;
+}
+
+.tracker-menu .tracker-item {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+}
+
+.tracker-menu .tracker-item:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.nav-item.tracker-dropdown.open .tracker-menu {
+  display: block;
+}
+
+/* bottom nav variant: menu appears above the fixed nav */
+.tracker-dropdown.bottom .tracker-menu {
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
+  top: auto;
+  bottom: calc(100% + 10px);
+  min-width: 200px;
+}
+
 .content {
   flex: 1;
   width: min(1320px, 100%);
